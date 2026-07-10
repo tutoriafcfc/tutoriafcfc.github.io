@@ -654,6 +654,78 @@
   .franja {
     padding-bottom: 30px !important;
   }
+}/* MEJORA PROFESIONAL DE ACCESOS RÁPIDOS */
+
+.accesos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.acceso {
+  min-height: 270px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid rgba(115, 21, 47, 0.10);
+  border-bottom: 4px solid var(--vino);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(25, 20, 22, 0.10);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.acceso:hover {
+  transform: translateY(-7px);
+  border-color: rgba(115, 21, 47, 0.28);
+  box-shadow: 0 20px 40px rgba(25, 20, 22, 0.16);
+}
+
+.acceso-icono {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff3f6, #f6e6eb);
+  font-size: 2rem;
+}
+
+.acceso h3 {
+  margin-bottom: 10px;
+  color: var(--vino-oscuro);
+  font-size: 1.22rem;
+  text-align: center;
+}
+
+.acceso p {
+  max-width: 245px;
+  color: var(--gris-texto);
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media (max-width: 920px) {
+  .accesos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .accesos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .acceso {
+    min-height: 220px;
+  }
 }</style>/* CORRECCIÓN DEFINITIVA DE LA FRANJA Y LAS TARJETAS */
 .franja {
   position: relative;
