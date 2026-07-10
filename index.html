@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="FCFC Contigo, asistente virtual de la Oficina de Tutoría y Psicopedagogía de la Facultad de Ciencias Financieras y Contables de la UNFV."
+  >
+
+  <title>FCFC Contigo | UNFV</title>
+
+  <style>
+    :root {
+      --vino: #7b1734;
+      --vino-oscuro: #4f0e20;
+      --dorado: #e1a933;
+      --crema: #fff9ef;
+      --blanco: #ffffff;
+      --gris: #60646c;
+      --fondo: #f4f5f7;
+      --sombra: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #242424;
+      background: var(--blanco);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .contenedor {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      background: var(--blanco);
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .menu {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--vino);
+      font-weight: bold;
+    }
+
+    .marca img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+    }
+
+    nav a {
+      color: #333333;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--vino);
+    }
+
+    .portada {
+      position: relative;
+      min-height: 630px;
+      display: flex;
+      align-items: center;
+      color: var(--blanco);
+      background:
+        linear-gradient(
+          90deg,
+          rgba(57, 7, 22, 0.94),
+          rgba(105, 18, 46, 0.82),
+          rgba(105, 18, 46, 0.38)
+        ),
+        url("facultad-fcfc.jpg") center/cover no-repeat;
+    }
+
+    .contenido-portada {
+      max-width: 730px;
+      padding: 80px 0;
+    }
+
+    .institucion {
+      color: #f4d98c;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .portada h1 {
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .portada h2 {
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      margin-bottom: 18px;
+      font-weight: normal;
+    }
+
+    .portada p {
+      max-width: 650px;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #f4e9ed;
+    }
+
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .boton-principal {
+      background: var(--dorado);
+      color: #271b00;
+    }
+
+    .boton-principal:hover {
+      background: #f1c45d;
+      transform: translateY(-2px);
+    }
+
+    .boton-secundario {
+      color: var(--blanco);
+      border: 2px solid var(--blanco);
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .titulo-seccion {
+      max-width: 720px;
+      margin-bottom: 38px;
+    }
+
+    .titulo-seccion span {
+      color: var(--vino);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.82rem;
+    }
+
+    .titulo-seccion h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin: 7px 0 12px;
+    }
+
+    .titulo-seccion p {
+      color: var(--gris);
+    }
+
+    .servicios {
+      background: var(--fondo);
+    }
+
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .tarjeta {
+      background: var(--blanco);
+      border-radius: 18px;
+      padding: 28px;
+      border-top: 5px solid var(--vino);
+      box-shadow: var(--sombra);
+    }
+
+    .icono {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .tarjeta h3 {
+      color: var(--vino-oscuro);
+      margin-bottom: 9px;
+    }
+
+    .tarjeta p {
+      color: var(--gris);
+    }
+
+    .presentacion {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .presentacion img {
+      width: 100%;
+      max-height: 490px;
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .presentacion h2 {
+      color: var(--vino);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 15px;
+    }
+
+    .presentacion p {
+      color: var(--gris);
+      margin-bottom: 14px;
+    }
+
+    .aviso {
+      background: var(--crema);
+    }
+
+    .caja-aviso {
+      background: var(--blanco);
+      border-left: 7px solid var(--dorado);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: var(--sombra);
+    }
+
+    .caja-aviso h2 {
+      color: var(--vino);
+      margin-bottom: 12px;
+    }
+
+    .preguntas {
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--vino-oscuro);
+      font-weight: bold;
+    }
+
+    details p {
+      margin-top: 12px;
+      color: var(--gris);
+    }
+
+    .llamado {
+      text-align: center;
+      background: var(--vino);
+      color: var(--blanco);
+    }
+
+    .llamado h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .llamado p {
+      max-width: 680px;
+      margin: 0 auto 25px;
+      color: #f2e5e9;
+    }
+
+    footer {
+      background: #260b14;
+      color: #f3e9ec;
+      padding: 38px 0;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    .pie-pequeno {
+      margin-top: 14px;
+      color: #cab9be;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        display: none;
+      }
+
+      .tarjetas {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .presentacion {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .portada {
+        min-height: 570px;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .tarjetas {
+        grid-template-columns: 1fr;
+      }
+
+      .botones {
+        flex-direction: column;
+      }
+
+      .boton {
+        width: 100%;
+      }
+
+      .marca small {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="contenedor menu">
+
+      <a class="marca" href="#inicio">
+        <img src="logo-fcfc.png" alt="Logotipo de la FCFC">
+        <div>
+          <div>FCFC CONTIGO</div>
+          <small>Tu bienestar es nuestra prioridad</small>
+        </div>
+      </a>
+
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#preguntas">Preguntas frecuentes</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="portada" id="inicio">
+      <div class="contenedor contenido-portada">
+
+        <div class="institucion">
+          Universidad Nacional Federico Villarreal
+        </div>
+
+        <h1>FCFC Contigo</h1>
+
+        <h2>Tu bienestar es nuestra prioridad.</h2>
+
+        <p>
+          Asistente virtual oficial de la Oficina de Tutoría y
+          Psicopedagogía de la Facultad de Ciencias Financieras y
+          Contables.
+        </p>
+
+        <div class="botones">
+
+          <a
+            class="boton boton-principal"
+            href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💬 Conversar con FCFC Contigo
+          </a>
+
+          <a class="boton boton-secundario" href="#servicios">
+            Conocer los servicios
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="servicios" id="servicios">
+      <div class="contenedor">
+
+        <div class="titulo-seccion">
+          <span>Orientación estudiantil</span>
+          <h2>¿En qué podemos acompañarte?</h2>
+          <p>
+            Recibe orientación inicial y recomendaciones prácticas
+            para afrontar diferentes situaciones de tu vida universitaria.
+          </p>
+        </div>
+
+        <div class="tarjetas">
+
+          <article class="tarjeta">
+            <div class="icono">📚</div>
+            <h3>Tutoría académica</h3>
+            <p>
+              Orientación para mejorar tu rendimiento y afrontar
+              dificultades en uno o más cursos.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono">⏰</div>
+            <h3>Organización del tiempo</h3>
+            <p>
+              Estrategias para organizar el estudio, el trabajo y
+              tus actividades personales.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono">📝</div>
+            <h3>Técnicas de estudio</h3>
+            <p>
+              Métodos de estudio, planificación, repaso,
+              comprensión y autoevaluación.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono">🧠</div>
+            <h3>Bienestar y orientación</h3>
+            <p>
+              Orientación inicial ante estrés, desmotivación o
+              preocupación académica.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono">🎓</div>
+            <h3>Vida universitaria</h3>
+            <p>
+              Apoyo para facilitar tu adaptación e integración
+              durante la etapa universitaria.
+            </p>
+          </article>
+
+          <article class="tarjeta">
+            <div class="icono">💼</div>
+            <h3>Desarrollo profesional</h3>
+            <p>
+              Orientación sobre currículum, entrevistas,
+              liderazgo y comunicación profesional.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="contenedor presentacion">
+
+        <div>
+          <h2>Estamos para acompañarte</h2>
+
+          <p>
+            FCFC Contigo brinda orientación académica y psicopedagógica
+            inicial a los estudiantes de la Facultad de Ciencias
+            Financieras y Contables.
+          </p>
+
+          <p>
+            Puedes conversar sobre dificultades académicas,
+            organización del tiempo, adaptación universitaria,
+            motivación y otros aspectos de tu formación.
+          </p>
+
+          <p>
+            Cuando la situación requiera atención personalizada,
+            recibirás orientación para comunicarte con la Oficina de
+            Tutoría y Psicopedagogía.
+          </p>
+        </div>
+
+        <img
+          src="arte-villarrealino.png"
+          alt="Elemento cultural representativo de la Universidad"
+        >
+
+      </div>
+    </section>
+
+    <section class="aviso">
+      <div class="contenedor">
+
+        <div class="caja-aviso">
+          <h2>Información importante</h2>
+
+          <p>
+            FCFC Contigo brinda orientación inicial y no reemplaza
+            la atención personalizada de un tutor, psicólogo,
+            docente u otro profesional.
+          </p>
+
+          <p>
+            No compartas contraseñas, información bancaria,
+            documentos de identidad ni otros datos personales sensibles.
+          </p>
+
+          <p>
+            Ante una emergencia o una situación de riesgo para tu
+            integridad o la de otra persona, busca ayuda presencial
+            inmediata y comunícate con los servicios de emergencia.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="preguntas">
+      <div class="contenedor">
+
+        <div class="titulo-seccion">
+          <span>Resolvemos tus dudas</span>
+          <h2>Preguntas frecuentes</h2>
+        </div>
+
+        <div class="preguntas">
+
+          <details>
+            <summary>¿Qué es FCFC Contigo?</summary>
+            <p>
+              Es el asistente virtual oficial de la Oficina de Tutoría
+              y Psicopedagogía de la FCFC.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Quién puede utilizarlo?</summary>
+            <p>
+              Está dirigido principalmente a estudiantes de la Facultad
+              de Ciencias Financieras y Contables.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Puede ayudarme si estoy desaprobando?</summary>
+            <p>
+              Sí. Puede orientarte para identificar dificultades,
+              organizar acciones de mejora y solicitar una tutoría
+              cuando sea necesario.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿Reemplaza la atención de un profesional?</summary>
+            <p>
+              No. Brinda orientación inicial y recomienda atención
+              personalizada cuando la situación lo requiere.
+            </p>
+          </details>
+
+          <details>
+            <summary>¿El acceso tiene costo?</summary>
+            <p>
+              El acceso al portal es gratuito. El uso del asistente
+              depende de las condiciones vigentes de la plataforma
+              ChatGPT.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="llamado">
+      <div class="contenedor">
+
+        <h2>No tienes que afrontar todo en soledad</h2>
+
+        <p>
+          Cuéntanos tu situación y recibe una orientación inicial
+          para avanzar un paso a la vez.
+        </p>
+
+        <a
+          class="boton boton-principal"
+          href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬 Iniciar conversación
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="contenedor">
+
+      <p><strong>FCFC Contigo</strong></p>
+
+      <p>Oficina de Tutoría y Psicopedagogía</p>
+
+      <p>Facultad de Ciencias Financieras y Contables</p>
+
+      <p>Universidad Nacional Federico Villarreal</p>
+
+      <p class="pie-pequeno">
+        Tu bienestar es nuestra prioridad.
+      </p>
+
+    </div>
+  </footer>
+
+</body>
+</html>
