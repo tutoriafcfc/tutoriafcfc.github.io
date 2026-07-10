@@ -726,7 +726,35 @@
   .acceso {
     min-height: 220px;
   }
-}</style>/* CORRECCIÓN DEFINITIVA DE LA FRANJA Y LAS TARJETAS */
+}</style>/* CORRECCIÓN DEFINITIVA DE LA FRANJA Y LAS TARJETAS *//* CORRECCIÓN DEFINITIVA DE LA FRANJA Y LAS TARJETAS */
+
+.franja {
+  position: relative;
+  z-index: 1;
+  padding: 28px 0 55px !important;
+}
+
+.accesos {
+  position: relative !important;
+  z-index: 2 !important;
+  margin-top: 0 !important;
+  padding: 35px 0 70px !important;
+}
+
+.accesos-grid {
+  align-items: stretch;
+}
+
+@media (max-width: 650px) {
+  .accesos {
+    margin-top: 0 !important;
+    padding-top: 25px !important;
+  }
+
+  .franja {
+    padding-bottom: 30px !important;
+  }
+}
 .franja {
   position: relative;
   z-index: 1;
