@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="FCFC Contigo, portal de orientación académica y psicopedagógica de la Facultad de Ciencias Financieras y Contables de la UNFV."
+  >
+
+  <title>FCFC Contigo | UNFV</title>
+
+  <style>
+    :root {
+      --vino: #721630;
+      --vino-oscuro: #3d0917;
+      --dorado: #e1aa37;
+      --dorado-claro: #f4d98d;
+      --blanco: #ffffff;
+      --crema: #fff9ef;
+      --gris-claro: #f5f6f8;
+      --texto: #202124;
+      --gris: #62666d;
+      --verde: #16844e;
+      --sombra: 0 16px 40px rgba(20, 20, 20, 0.12);
+      --radio: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--blanco);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .contenedor {
+      width: min(1140px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .navegacion {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--vino);
+    }
+
+    .marca img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+    }
+
+    .marca strong,
+    .marca span {
+      display: block;
+    }
+
+    .marca span {
+      color: var(--gris);
+      font-size: 0.85rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      color: #303030;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: var(--vino);
+    }
+
+    .boton-menu {
+      padding: 10px 18px;
+      border-radius: 10px;
+      color: var(--blanco);
+      background: var(--vino);
+    }
+
+    nav .boton-menu:hover {
+      color: var(--blanco);
+      background: var(--vino-oscuro);
+    }
+
+    .portada {
+      min-height: 660px;
+      display: flex;
+      align-items: center;
+      color: var(--blanco);
+      background:
+        linear-gradient(
+          100deg,
+          rgba(48, 5, 17, 0.97) 0%,
+          rgba(106, 19, 47, 0.88) 50%,
+          rgba(60, 10, 25, 0.34) 100%
+        ),
+        url("facultad-fcfc.jpeg") center / cover no-repeat;
+    }
+
+    .portada-contenido {
+      max-width: 760px;
+      padding: 95px 0;
+    }
+
+    .distintivo {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.36);
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--dorado-claro);
+      font-weight: 700;
+    }
+
+    .portada h1 {
+      font-size: clamp(3.4rem, 9vw, 6.2rem);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .portada h2 {
+      font-size: clamp(1.4rem, 3vw, 2.15rem);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .portada p {
+      max-width: 690px;
+      margin-bottom: 30px;
+      color: #f5e9ed;
+      font-size: 1.08rem;
+    }
+
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .boton {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 23px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .boton:hover {
+      transform: translateY(-2px);
+    }
+
+    .boton-principal {
+      color: #281a00;
+      background: var(--dorado);
+    }
+
+    .boton-secundario {
+      color: var(--blanco);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+    }
+
+    .beneficios {
+      padding: 28px 0;
+      background: var(--vino-oscuro);
+      color: var(--blanco);
+    }
+
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .beneficio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .beneficio-icono {
+      font-size: 2rem;
+    }
+
+    .beneficio strong {
+      color: var(--dorado-claro);
+    }
+
+    .beneficio p {
+      color: #eadde1;
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .encabezado {
+      max-width: 740px;
+      margin-bottom: 38px;
+    }
+
+    .encabezado span {
+      color: var(--vino);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+
+    .encabezado h2 {
+      margin: 8px 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.18;
+    }
+
+    .encabezado p {
+      color: var(--gris);
+    }
+
+    .accesos {
+      background: var(--blanco);
+    }
+
+    .accesos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 21px;
+    }
+
+    .acceso {
+      min-height: 250px;
+      padding: 28px 23px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--texto);
+      background: var(--blanco);
+      border: 1px solid rgba(114, 22, 48, 0.10);
+      border-bottom: 4px solid var(--vino);
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+      text-align: center;
+      transition: 0.25s ease;
+    }
+
+    .acceso:hover {
+      transform: translateY(-6px);
+    }
+
+    .acceso-icono {
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 17px;
+      border-radius: 50%;
+      background: #f8e9ed;
+      font-size: 2rem;
+    }
+
+    .acceso h3 {
+      color: var(--vino-oscuro);
+      margin-bottom: 9px;
+    }
+
+    .acceso p {
+      color: var(--gris);
+    }
+
+   .servicios {
+    background: var(--gris-claro);
+}
+
+.servicio {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.servicio:hover {
+    transform: translateY(-6px);
+}
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 23px;
+    }
+
+    .servicio {
+      padding: 29px;
+      border-top: 5px solid var(--vino);
+      border-radius: var(--radio);
+      background: var(--blanco);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .servicio-icono {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 17px;
+      border-radius: 15px;
+      background: #f8e9ed;
+      font-size: 1.8rem;
+    }
+
+    .servicio h3 {
+      color: var(--vino-oscuro);
+      margin-bottom: 9px;
+    }
+
+    .servicio p {
+      color: var(--gris);
+    }
+
+    .tutoria {
+      background: var(--crema);
+    }
+
+    .dos-columnas {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .dos-columnas > div > p {
+      color: var(--gris);
+    }
+
+    .lista {
+      display: grid;
+      gap: 12px;
+      margin: 23px 0 28px;
+      list-style: none;
+    }
+
+    .lista li::before {
+      content: "✓";
+      margin-right: 10px;
+      color: var(--vino);
+      font-weight: 900;
+    }
+
+    .tarjeta-apoyo,
+    .tarjeta-arte {
+      padding: 30px;
+      border-radius: var(--radio);
+      background: var(--blanco);
+      text-align: center;
+      box-shadow: var(--sombra);
+    }
+
+    .tarjeta-apoyo .grande {
+      font-size: 5rem;
+    }
+
+    .tarjeta-apoyo h3 {
+      color: var(--vino);
+      font-size: 1.5rem;
+      margin: 12px 0 8px;
+    }
+
+    .tarjeta-apoyo p {
+      color: var(--gris);
+    }
+
+    .tarjeta-arte img {
+      max-height: 450px;
+      object-fit: contain;
+    }
+
+    .preguntas {
+      background: var(--gris-claro);
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    details {
+      padding: 18px 21px;
+      border: 1px solid #dddddd;
+      border-radius: 13px;
+      background: var(--blanco);
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--vino-oscuro);
+      font-weight: 800;
+    }
+
+    details p {
+      margin-top: 12px;
+      color: var(--gris);
+    }
+
+    .aviso {
+      padding: 70px 0;
+      background: var(--crema);
+    }
+
+    .aviso-caja {
+      padding: 31px;
+      border-left: 7px solid var(--dorado);
+      border-radius: 16px;
+      background: var(--blanco);
+      box-shadow: var(--sombra);
+    }
+
+    .aviso-caja h2 {
+      color: var(--vino);
+      margin-bottom: 12px;
+    }
+
+    .aviso-caja p + p {
+      margin-top: 10px;
+    }
+
+    .cierre {
+      color: var(--blanco);
+      text-align: center;
+      background: linear-gradient(135deg, var(--vino-oscuro), var(--vino));
+    }
+
+    .cierre h2 {
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      margin-bottom: 12px;
+    }
+
+    .cierre p {
+      max-width: 680px;
+      margin: 0 auto 25px;
+      color: #f1e4e8;
+    }
+
+    .botones-centro {
+      justify-content: center;
+    }
+
+    .flotantes {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 999;
+      display: grid;
+      gap: 10px;
+    }
+
+    .flotante {
+      width: 57px;
+      height: 57px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--blanco);
+      font-size: 1.5rem;
+      box-shadow: var(--sombra);
+    }
+
+    .chat {
+      background: var(--vino);
+    }
+
+    .whatsapp {
+      background: var(--verde);
+    }
+
+    footer {
+      padding: 42px 0;
+      color: #f2e9ec;
+      background: #220810;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 3px 0;
+    }
+
+    footer small {
+      display: block;
+      margin-top: 14px;
+      color: #c9b7bc;
+    }
+
+    @media (max-width: 920px) {
+      nav {
+        display: none;
+      }
+
+      .accesos-grid,
+      .servicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dos-columnas {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .portada {
+        min-height: 620px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .beneficios-grid,
+      .accesos-grid,
+      .servicios-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .beneficio {
+        justify-content: flex-start;
+      }
+
+      .botones {
+        flex-direction: column;
+      }
+
+      .boton {
+        width: 100%;
+      }
+
+      .marca span {
+        display: none;
+      }
+    }
+  
+/* TARJETAS INTERACTIVAS */
+.servicio {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.servicio:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(32, 12, 20, .16);
+}
+
+.ver-mas {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--vino);
+  font-weight: 800;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="contenedor navegacion">
+
+    <a class="marca" href="#inicio">
+      <img src="logo-fcfc.png" alt="Logotipo de la FCFC">
+
+      <div>
+        <strong>FCFC CONTIGO</strong>
+        <span>Tu bienestar es nuestra prioridad</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#tutoria">Tutorías</a>
+      <a href="#cachimbo">Soy cachimbo</a>
+      <a href="#preguntas">Preguntas</a>
+
+      <a
+        class="boton-menu"
+        href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Conversar
+      </a>
+    <a href="#contacto">Contacto</a></nav>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="portada" id="inicio">
+    <div class="contenedor portada-contenido">
+
+      <div class="distintivo">
+        Oficina de Tutoría y Psicopedagogía
+      </div>
+
+      <h1>FCFC Contigo</h1>
+
+      <h2>Tu bienestar es nuestra prioridad.</h2>
+
+      <p>
+        Portal de orientación académica y psicopedagógica inicial para
+        estudiantes de la Facultad de Ciencias Financieras y Contables
+        de la Universidad Nacional Federico Villarreal.
+      </p>
+
+      <div class="botones">
+
+        <a
+          class="boton boton-principal"
+          href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬 Conversar con FCFC Contigo
+        </a>
+
+        <a
+          class="boton boton-secundario"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScdgNAwApUS2p-DU-6qQPlByoEqDpDYwaNtJwuup33QeEvVyA/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📅 Solicitar tutoría
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="beneficios">
+    <div class="contenedor beneficios-grid">
+
+      <article class="beneficio">
+        <div class="beneficio-icono">🧭</div>
+        <div>
+          <strong>Orientación académica</strong>
+          <p>Recomendaciones para mejorar tu desempeño.</p>
+        </div>
+      </article>
+
+      <article class="beneficio">
+        <div class="beneficio-icono">🤝</div>
+        <div>
+          <strong>Acompañamiento</strong>
+          <p>Apoyo durante tu formación universitaria.</p>
+        </div>
+      </article>
+
+      <article class="beneficio">
+        <div class="beneficio-icono">📱</div>
+        <div>
+          <strong>Acceso gratuito</strong>
+          <p>Disponible desde celular o computadora.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="accesos">
+    <div class="contenedor accesos-grid">
+
+      <a
+        class="acceso"
+        href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div class="acceso-icono">🤖</div>
+        <h3>Conversar ahora</h3>
+        <p>Cuéntanos tu situación y recibe orientación inicial.</p>
+      </a>
+
+      <a class="acceso" href="#cachimbo">
+        <div class="acceso-icono">🎓</div>
+        <h3>Soy cachimbo</h3>
+        <p>Encuentra recomendaciones para tu adaptación universitaria.</p>
+      </a>
+
+      <a class="acceso" href="#servicios">
+        <div class="acceso-icono">📚</div>
+        <h3>Necesito orientación</h3>
+        <p>Conoce los temas en los que podemos acompañarte.</p>
+      </a>
+
+      <a class="acceso" href="#preguntas">
+        <div class="acceso-icono">❓</div>
+        <h3>Preguntas frecuentes</h3>
+        <p>Resuelve rápidamente tus principales dudas.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="servicios" id="servicios">
+    <div class="contenedor">
+
+      <div class="encabezado">
+        <span>Servicios de orientación</span>
+        <h2>Estamos para acompañarte</h2>
+        <p>
+          Recibe orientación inicial y recomendaciones prácticas durante
+          tu vida universitaria.
+        </p>
+      </div>
+
+      <div class="servicios-grid">
+<a class="servicio" href="servicios.html#tutoria">
+    <div class="servicio-icono">📘</div>
+    <h3>Tutoría académica</h3>
+    <p>
+        Orientación frente a bajo rendimiento, dificultades en cursos
+        o necesidad de mejorar tu desempeño.
+    </p>
+<span class="ver-mas">Conocer más →</span>
+</a>
+
+        <a class="servicio" href="servicios.html#organizacion">
+          <div class="servicio-icono">⏰</div>
+          <h3>Organización del tiempo</h3>
+          <p>
+            Estrategias para equilibrar el estudio, el trabajo y tus
+            actividades personales.
+          </p>
+        <span class="ver-mas">Conocer más →</span></a>
+
+<a class="servicio" href="servicios.html#tecnicas">
+          <div class="servicio-icono">📝</div>
+          <h3>Técnicas de estudio</h3>
+          <p>
+            Métodos de lectura, repaso, autoevaluación, resúmenes
+            y planificación.
+          </p>
+       <span class="ver-mas">Conocer más →</span>
+      </a>
+
+        <a class="servicio" href="servicios.html#bienestar">
+          <div class="servicio-icono">🧠</div>
+          <h3>Bienestar y orientación</h3>
+          <p>
+            Orientación inicial ante estrés, desmotivación o preocupación
+            académica.
+          </p>
+       <span class="ver-mas">Conocer más →</span>
+      </a>
+
+       <a class="servicio" href="servicios.html#vida">
+          <div class="servicio-icono">🏫</div>
+          <h3>Vida universitaria</h3>
+          <p>
+            Apoyo para facilitar tu adaptación, integración y participación.
+          </p>
+        <span class="ver-mas">Conocer más →</span>
+      </a>
+
+       <a class="servicio" href="servicios.html#desarrollo">
+          <div class="servicio-icono">💼</div>
+          <h3>Desarrollo profesional</h3>
+          <p>
+            Orientación sobre currículum, entrevistas, liderazgo
+            y comunicación profesional.
+          </p>
+       <span class="ver-mas">Conocer más →</span>
+      </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="tutoria" id="tutoria">
+    <div class="contenedor dos-columnas">
+
+      <div>
+        <div class="encabezado">
+          <span>Atención personalizada</span>
+          <h2>Solicita una tutoría</h2>
+        </div>
+
+        <p>
+          Registra tu solicitud cuando necesites una orientación más
+          personalizada. La Oficina revisará la información y confirmará
+          la atención según sus procedimientos y disponibilidad.
+        </p>
+
+        <ul class="lista">
+          <li>Completa tus datos básicos.</li>
+          <li>Indica el motivo general de tu consulta.</li>
+          <li>Espera la confirmación de la Oficina.</li>
+        </ul>
+
+        <a
+          class="boton boton-principal"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScdgNAwApUS2p-DU-6qQPlByoEqDpDYwaNtJwuup33QeEvVyA/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📅 Registrar solicitud
+        </a>
+      </div>
+
+      <div class="tarjeta-apoyo">
+        <div class="grande">👨‍🏫</div>
+        <h3>Acompañamiento personalizado</h3>
+        <p>
+          Pedir ayuda es una fortaleza. Una tutoría puede ayudarte a
+          organizar tus siguientes pasos.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="cachimbo">
+    <div class="contenedor dos-columnas">
+
+      <div>
+        <div class="encabezado">
+          <span>Ruta del Cachimbo</span>
+          <h2>Bienvenido a la FCFC</h2>
+        </div>
+
+        <p>
+          Iniciar la vida universitaria implica cambios, nuevas
+          responsabilidades y aprendizajes. La adaptación toma tiempo.
+        </p>
+
+        <ul class="lista">
+          <li>Organiza tus clases, repasos y descansos.</li>
+          <li>Conoce a tus compañeros y forma grupos de estudio.</li>
+          <li>Pregunta cuando tengas dudas.</li>
+          <li>Cuida tus hábitos de sueño y alimentación.</li>
+          <li>Confía en tu proceso.</li>
+        </ul>
+
+        <a
+          class="boton boton-principal"
+          href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🎓 Iniciar la Ruta del Cachimbo
+        </a>
+      </div>
+
+      <div class="tarjeta-arte">
+        <img
+          src="arte-villarrealino.png"
+          alt="Elemento cultural representativo de la Universidad"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <section class="preguntas" id="preguntas">
+    <div class="contenedor">
+
+      <div class="encabezado">
+        <span>Resolvemos tus dudas</span>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+
+      <div class="faq">
+
+        <details>
+          <summary>¿Qué es FCFC Contigo?</summary>
+          <p>
+            Es el asistente virtual oficial de la Oficina de Tutoría
+            y Psicopedagogía de la FCFC.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Quién puede solicitar una tutoría?</summary>
+          <p>Cualquier estudiante de la Facultad.</p>
+        </details>
+
+        <details>
+          <summary>¿La tutoría tiene costo?</summary>
+          <p>No. La tutoría académica no tiene costo.</p>
+        </details>
+
+        <details>
+          <summary>¿FCFC Contigo reemplaza a un profesional?</summary>
+          <p>
+            No. Brinda orientación inicial y recomienda atención
+            personalizada cuando la situación lo requiere.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="aviso">
+    <div class="contenedor aviso-caja">
+
+      <h2>Información importante</h2>
+
+      <p>
+        FCFC Contigo brinda orientación académica y psicopedagógica inicial.
+        No reemplaza la atención personalizada de un tutor, psicólogo,
+        docente u otro profesional.
+      </p>
+
+      <p>
+        Evita compartir contraseñas, datos bancarios, documentos de identidad
+        u otra información personal sensible.
+      </p>
+
+      <p>
+        Ante una emergencia o situación de riesgo, busca ayuda presencial
+        inmediata y comunícate con los servicios de emergencia.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="cierre">
+    <div class="contenedor">
+
+      <h2>No tienes que afrontar todo en soledad</h2>
+
+      <p>
+        Cuéntanos tu situación y recibe una orientación inicial para
+        avanzar un paso a la vez.
+      </p>
+
+      <div class="botones botones-centro">
+
+        <a
+          class="boton boton-principal"
+          href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          💬 Conversar ahora
+        </a>
+
+        <a
+          class="boton boton-secundario"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScdgNAwApUS2p-DU-6qQPlByoEqDpDYwaNtJwuup33QeEvVyA/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📅 Solicitar tutoría
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="flotantes">
+
+  <a
+    class="flotante chat"
+    href="https://chatgpt.com/g/g-6a45ad08e1348191a7600234f1895835-fcfc-contigo"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Conversar con FCFC Contigo"
+    title="Conversar con FCFC Contigo"
+  >
+    💬
+  </a>
+
+  <a
+    class="flotante whatsapp"
+    href="https://wa.me/?text=Conoce%20FCFC%20Contigo:%20https://tutoriafcfc.github.io"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Compartir por WhatsApp"
+    title="Compartir por WhatsApp"
+  >
+    📲
+  </a>
+
+</div>
+
+<footer>
+  <div class="contenedor">
+    <strong>FCFC Contigo</strong>
+    <p>Oficina de Tutoría y Psicopedagogía</p>
+    <p>Facultad de Ciencias Financieras y Contables</p>
+    <p>Universidad Nacional Federico Villarreal</p>
+    <small>Tu bienestar es nuestra prioridad.</small>
+  </div>
+<section id="contacto"><h2>Contacto</h2><p>Correo: <a href="mailto:otps.fcfc@unfv.edu.pe">otps.fcfc@unfv.edu.pe</a></p><p>Dirección: Avenida Nicolás de Piérola 262, Cercado de Lima</p><p>Horario: lunes a viernes, 8:00 a. m. a 5:00 p. m.</p><p><a href="https://wa.me/51963762075">WhatsApp: 963 762 075</a></p></section><div>Correo: otps.fcfc@unfv.edu.pe | Avenida Nicolás de Piérola 262, Cercado de Lima | lunes a viernes, 8:00 a. m. a 5:00 p. m. | <a href="https://wa.me/51963762075">963 762 075</a></div></footer>
+
+</body>
+</html>
